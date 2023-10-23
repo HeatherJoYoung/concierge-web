@@ -3,6 +3,11 @@
     <img class=logo src="../../assets/butler.png">
     <h1>My Concierge</h1>
     <h1 v-if="subtitle">&nbsp;- {{ subtitle }}</h1>
+
+    <div class="right-section">
+      <a><button><router-link to="/login">Sign In</router-link></button></a>
+      <button><router-link to="/register">Sign Up</router-link></button>
+    </div>
   </div>
 </template>
   
@@ -49,6 +54,12 @@ export default {
     color: white;
     font-family: 'Marcellus', Times, serif;
     font-size: 3rem;
+  }
+  .right-section {
+    position: absolute;
+    display: block;
+    padding-right: 20px;
+    right: 0;
   }
 }
 </style>
