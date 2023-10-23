@@ -6,6 +6,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import NavBar from '@/components/shared/NavBar.vue';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const app = createApp(App)
 
