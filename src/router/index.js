@@ -6,6 +6,8 @@ import Events from '../components/services/Events.vue'
 import Spa from '../components/services/Spa.vue'
 import AdminDashboard from '../components/mgmt/AdminDashboard.vue'
 import SpaManagement from '../components/mgmt/SpaManagement.vue'
+import Login from '../components/pages/LoginPage.vue'
+import Register from '../components/pages/RegisterPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +46,16 @@ const router = createRouter({
       path: '/mgmt/spa',
       name: 'spa-mgmt',
       component: SpaManagement
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
     },
     {
       path: '/about',
