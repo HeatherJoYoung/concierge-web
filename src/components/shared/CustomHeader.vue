@@ -5,7 +5,7 @@
     <h1 v-if="subtitle">&nbsp;- {{ subtitle }}</h1>
 
     <div class="right-section">
-      <a><button><router-link to="/login">Sign In</router-link></button></a>
+      <button><router-link to="/login">Sign In</router-link></button>
       <button><router-link to="/register">Sign Up</router-link></button>
     </div>
   </div>
