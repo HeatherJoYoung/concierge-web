@@ -8,15 +8,67 @@
                   Sign in
               </div>
               <div class="login-item">
-                  <form action="" method="post" class="form form-login">
+                  <form 
+                    action="" 
+                    method="POST" 
+                    class="form form-login"
+                    novalidate="true"
+                    v-on:submit.prevent="validate"
+                    autocomplete="off"
+                    id="Form"
+                  >
+                      <!-- Invalid email -->
+                      <span class="invalid-feedback" v-if="validation.invalid.email">
+                        {{ validation.invalid.email }}
+                      </span>
+                      <!-- Valid email --->
+                      <span class="valid-feedback" v-if="validation.valid.email">
+                        {{ validation.valid.email }}
+                      </span>
                       <div class="form-field">
                           <label class="user" for="login-email"><span class="hidden">Email</span></label>
-                          <input id="login-email" type="text" class="form-input" placeholder="Email" required>
+                          <input 
+                            type="text" 
+                            name="email"
+                            placeholder="Email" 
+                            id="email" 
+                            class="form-input" 
+                            autocomplete="false"
+                            v-bind:class="{
+                              'is-valid' : validation.valid.email,
+                              'is-invalid' : validation.invalid.email
+                            }"
+                            v-on:focus="clearValidation('email')"
+                            v-model="email"
+                            required
+                          />
                       </div>
 
+
+                      <!-- Valid Password -->
+                      <span class="invalid-feedback" v-if="validation.invalid.password">
+                        {{ validation.invalid.password }}
+                      </span>
+                      <!-- Invalid password -->
+                      <span class="valid-feedback" v-if="validation.valid.password">
+                        {{ validation.valid.password }}
+                      </span>
                       <div class="form-field">
                           <label class="lock" for="login-password"><span class="hidden">Password</span></label>
-                                  <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+                          <input 
+                            id="password" 
+                            type="password"
+                            name="password"
+                            class="form-input" 
+                            placeholder="Password" 
+                            v-bind:class="{
+                              'is-valid' : validation.valid.password,
+                              'is-invalid' : validation.invalid.password
+                            }"
+                            v-on:focus="clearValidation('password')"
+                            v-model="password"
+                            required
+                          />
                       </div>
                           
                       <div class="form-field">
@@ -44,14 +96,49 @@ export default {
       LayoutDiv
   },
   data() {
-  return {
-      email:'',
-      password:'',
-      validationErrors:{},
-      isSubmitting:false,
-  };
-},
-}
+    return {
+      email: '',
+      password: '',
+
+      validation: {
+        invalid: {},
+        valid: {}
+      }
+    };
+  },
+
+  methods: {
+    validate: function () {
+      // Email validation
+      if (!this.email) {
+        this.validation.invalid.email = 'Please enter your email address.';
+      } else {
+        this.validation.valid.email = '';
+      }
+
+      // Password validation
+      if (!this.password) {
+        this.validation.invalid.password = 'Please enter password.';
+      } else if (this.password.length < 8) {
+        this.validation.invalid.password = 
+          'Password should have a minimum of 8 characters.';
+      } else if (this.password.match(/[^a-z]/i)) {
+        this.validation.invalid.password = 
+          'Password should contain only latin letters (a-z).';
+      } else {
+        this.validation.valid.password = '';
+      }
+
+      this.$forceUpdate();
+    }
+  },
+
+  clearValidation: function (field) {
+    this.validation.valid[field] = '';
+    this.validation.invalid[field] = '';
+    this.$forceUpdate();
+  }
+};
 </script>
 
 <style lang="scss">
@@ -190,6 +277,12 @@ export default {
 .link {
   color: #00d6c0;
 }
+
+.invalid-feedback {
+  color: red;
+  text-align: center;
+}
+
 }
 
 </style>
