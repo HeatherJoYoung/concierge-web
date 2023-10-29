@@ -1,35 +1,35 @@
 <template>
-    <div class="login-page">
-        <CustomHeader title="My Concierge" subtitle="Sign In" />
-        <NavBar />
-        <LayoutDiv>
-            <div class="contents">
-                <div class="logo">
-                    Sign In
-                </div>
-                <div class="login-item">
-                    <form action="" method="post" class="form form-login">
-                        <div class="form-field">
-                            <label class="user" for="login-email"><span class="hidden">Email</span></label>
-                            <input id="login-email" type="text" class="form-input" placeholder="Email" required>
-                        </div>
+  <div class="login-page">
+      <CustomHeader title="My Concierge" subtitle="Sign in" />
+      <NavBar />
+      <LayoutDiv>
+          <div class="contents">
+              <div class="logo">
+                  Sign in
+              </div>
+              <div class="login-item">
+                  <form action="" method="post" class="form form-login">
+                      <div class="form-field">
+                          <label class="user" for="login-email"><span class="hidden">Email</span></label>
+                          <input id="login-email" type="text" class="form-input" placeholder="Email" required>
+                      </div>
 
-                        <div class="form-field">
-                            <label class="lock" for="login-password"><span class="hidden">Password</span></label>
-                                    <input id="login-password" type="password" class="form-input" placeholder="Password" required>
-                        </div>
-                            
-                        <div class="form-field">
-                            <input type="submit" value="Log in">
-                        </div>
-                        <p class="register-link">Don't have account? 
-                            <router-link to="/register">Register here </router-link>
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </LayoutDiv>
-    </div>
+                      <div class="form-field">
+                          <label class="lock" for="login-password"><span class="hidden">Password</span></label>
+                                  <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+                      </div>
+                          
+                      <div class="form-field">
+                          <input type="submit" value="Log in">
+                      </div>
+                      <p class="register-link">Don't have account? 
+                          <router-link to="/register"><span class="link">Register here</span></router-link>
+                      </p>
+                  </form>
+              </div>
+          </div>
+      </LayoutDiv>
+  </div>
 </template>
 
 <script>
@@ -38,19 +38,19 @@ import NavBar from '@/components/shared/NavBar.vue';
 import LayoutDiv from '@/components/shared/LayoutDiv.vue';
 
 export default {
-    components: {
-        CustomHeader,
-        NavBar,
-        LayoutDiv
-    },
-    data() {
-    return {
-        email:'',
-        password:'',
-        validationErrors:{},
-        isSubmitting:false,
-    };
+  components: {
+      CustomHeader,
+      NavBar,
+      LayoutDiv
   },
+  data() {
+  return {
+      email:'',
+      password:'',
+      validationErrors:{},
+      isSubmitting:false,
+  };
+},
 }
 </script>
 
@@ -62,59 +62,63 @@ export default {
 .login-page {
   background-size: cover;
   background-color: rgb(183, 183, 183);
-  min-height: 100vh;
+  min-height: 110vh;
+  nav {
+  margin: 0;
+  padding: 12px;
+  border-bottom: 1px solid black;
+  background-color: white;
+  text-align: center;
+  }
 }
 
 .contents {
-    background:rgb(154, 149, 149);
-    border-radius: 5px;
-    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
-    width: 600px;
-    display: flex;  
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-top: 3rem !important;
-    justify-content: center !important;
-    margin: auto;
-}
-
-.logo{
-  font-family: "museo-slab";  
-  font-size:40px;
-  text-align: center;
-  padding: 20px 20px 0;
-  margin:0;
-  color: #ffffff;
-}
-
-.login-item {
-	color: #a8a8a8;
-	padding:25px 25px 0;
-	margin: 20px 20px 0;	
-	border-radius: 3px;
-}
-
-input {
-  border: 0;
-  color: inherit;
-  font: inherit;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-  -webkit-transition: background-color .3s;
-  transition: background-color .3s;
-}
-
+      background:rgb(154, 149, 149);
+      border-radius: 5px;
+      box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+      width: 600px;
+      display: flex;  
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin-top: 3rem !important;
+      justify-content: center !important;
+      margin: auto;
+      margin-bottom: 3rem;
+      .logo{
+          font-family: "museo-slab";  
+          font-size:40px;
+          text-align: center;
+          padding: 20px 20px 0;
+          margin:0;
+          color: #ffffff;
+      }
+      .login-item {
+        color: #a8a8a8;
+        padding:25px 25px 0;
+        margin: 20px 20px 0;	
+        border-radius: 3px;
+      }
+      input {
+          border: 0;
+          color: inherit;
+          font: inherit;
+          margin: 0;
+          outline: 0;
+          padding: 0;
+          -webkit-transition: background-color .3s;
+          transition: background-color .3s;
+      }
+  
 .user:before {
-    content: "\f003";
-    font: 14px fontawesome;
-	color: #5b5b5b;
+  content: "\f003";
+  font: 14px fontawesome;
+  color: #5b5b5b;
 }
-
+  
 .lock:before {
   content: '\f023';
   font: 20px fontawesome;
-    color: #5b5b5b;
+  color: #5b5b5b;
 }
 
 .form input[type="password"], .form input[type="text"], .form input[type="submit"] {
@@ -163,7 +167,6 @@ input {
   margin-bottom: 2rem;
 }
 
-
 .hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -180,8 +183,13 @@ input {
 }
 
 .register-link {
-    text-align: center;
-    color: #e5e5e5;
+  text-align: center;
+  color: #e5e5e5;
+}
+
+.link {
+  color: #00d6c0;
+}
 }
 
 </style>
