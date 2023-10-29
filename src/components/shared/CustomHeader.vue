@@ -5,8 +5,8 @@
     <h1 v-if="subtitle">&nbsp;- {{ subtitle }}</h1>
 
     <div class="right-section">
-      <button><router-link to="/login">Sign In</router-link></button>
-      <button><router-link to="/register">Sign Up</router-link></button>
+      <button><router-link to="/login">Sign in</router-link></button>
+      <button><router-link to="/register">Sign up</router-link></button>
     </div>
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
     display: block;
     margin: 20px 40px;
     height: 100px;
-    width: 100px;    
+    width: 120px;    
     border-radius: 6px;
   }
   h1 {
@@ -60,6 +60,15 @@ export default {
     display: block;
     padding-right: 20px;
     right: 0;
+    padding-left: 50px;
+  }
+  button {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    padding: 15px 30px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
   }
 }
 </style>
