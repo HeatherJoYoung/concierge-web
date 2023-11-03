@@ -98,7 +98,11 @@ export default {
   data() {
     return {
       email: '',
+      emailBlured: false,
       password: '',
+      passwordBlured: false,
+      valid: false,
+      submitted: false,
 
       validation: {
         invalid: {},
