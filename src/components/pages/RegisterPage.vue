@@ -9,11 +9,19 @@
                 </div>
                 <div class="login-item">
                     <form action="" method="post" class="form form-login">
-                        <div class="form-field">
+                        <div class="form-field" id="formvalidation">
                             <label class="user" for="login-email"><span class="hidden">Email address</span></label>
-                            <input id="login-email" type="text" class="form-input" placeholder="Email address" required>
+                            <input 
+                                autocomplete="off"
+                                type="text"
+                                v-model="email"
+                                v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
+                                v-on:blur="emailBlured = true"
+                                placeholder="Email address" 
+                                required
+                            >
                         </div>
-
+                        
                         <div class="form-field">
                             <label class="user-confirm" for="login-email"><span class="hidden">Confirm Email</span></label>
                             <input id="login-email" type="text" class="form-input" placeholder="Confirm Email address" required>
@@ -21,7 +29,14 @@
 
                         <div class="form-field">
                             <label class="lock" for="login-password"><span class="hidden">Password</span></label>
-                            <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+                            <input 
+                                autocomplete="off" 
+                                type="password" 
+                                v-model="password" 
+                                v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}" 
+                                v-on:blur="passwordBlured = true"
+                                placeholder="Password" 
+                                required>
                         </div>
 
                         <div class="form-field">
@@ -47,22 +62,54 @@ import CustomHeader from '@/components/shared/CustomHeader.vue';
 import NavBar from '@/components/shared/NavBar.vue';
 import LayoutDiv from '@/components/shared/LayoutDiv.vue';
 
-export default{
+export default {
     components: {
         CustomHeader,
         NavBar,
         LayoutDiv
     },
+
+    el: '#formvalidation',
     data() {
-    return {
-        name:'',
-        email:'',
-        password:'',
-        confirmPassword:'',
-        validationErrors:{},
-        isSubmitting:false,
-    };
-  },
+        return {
+            name:'',
+            email:'',
+            password:'',
+            confirmPassword:'',
+            validationErrors:{},
+            isSubmitting:false,
+        };
+    },
+
+    methods: {
+        validate: function() {
+            this.emailBlured = true;
+            this.passwordBlured = true;
+            if( this.validEmail(this.email) && this.validPassword(this.password)){
+                this.valid = true;
+            }
+        },
+
+        validEmail: function(email) {
+            var re = /(.+)@(.+){2,}\.(.+){2,}/;
+            if(re.test(email.toLowerCase())){
+                return true;
+            }
+        },
+
+        validPassword : function(password) {
+            if (password.length > 7) {
+                return true;
+            }
+        },
+
+        submit : function(){
+            this.validate();
+            if(this.valid){
+                this.submitted = true;
+            }
+        }
+    }
 }
 </script>
 
