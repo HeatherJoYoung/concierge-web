@@ -1,33 +1,34 @@
 <template>
-  <div class="login-page">
-      <CustomHeader title="My Concierge" subtitle="Sign in" />
-      <NavBar />
-      <LayoutDiv>
-          <div class="contents">
-              <div class="logo">
-                  Sign in
-              </div>
-              <div class="login-item">
-                  <form 
-                    action="" 
-                    method="POST" 
-                    class="form form-login"
-                    novalidate="true"
-                    v-on:submit.prevent="validate"
-                    autocomplete="off"
-                    id="Form"
-                  >
-                      <!-- Invalid email -->
-                      <span class="invalid-feedback" v-if="validation.invalid.email">
-                        {{ validation.invalid.email }}
-                      </span>
-                      <!-- Valid email --->
-                      <span class="valid-feedback" v-if="validation.valid.email">
-                        {{ validation.valid.email }}
-                      </span>
-                      <div class="form-field">
-                          <label class="user" for="login-email"><span class="hidden">Email</span></label>
-                          <input 
+    <div class="login-page">
+        <CustomHeader title="My Concierge" subtitle="Sign in" />
+        <NavBar />
+        <LayoutDiv>
+            <div class="contents">
+                <div class="logo">
+                    Sign in
+                </div>
+                <div class="login-item">
+                    <form 
+                        action="" 
+                        method="POST" 
+                        class="form form-login"
+                        novalidate="true"
+                        v-on:submit.prevent="validate"
+                        autocomplete="off"
+                        id="Form"
+                    >
+            
+                <!-- Invalid email -->
+                <span class="invalid-feedback" v-if="validation.invalid.email">
+                    {{ validation.invalid.email }}
+                </span>
+                <!-- Valid email --->
+                <span class="valid-feedback" v-if="validation.valid.email">
+                    {{ validation.valid.email }}
+                </span>
+                <div class="form-field">
+                    <label class="user" for="login-email"><span class="hidden">Email</span></label>
+                        <input 
                             type="text" 
                             name="email"
                             placeholder="Email" 
@@ -38,50 +39,50 @@
                               'is-valid' : validation.valid.email,
                               'is-invalid' : validation.invalid.email
                             }"
-                            v-on:focus="clearValidation('email')"
+                            v-on:focus="validation('email')"
                             v-model="email"
                             required
                           />
-                      </div>
+                </div>
 
 
-                      <!-- Valid Password -->
-                      <span class="invalid-feedback" v-if="validation.invalid.password">
-                        {{ validation.invalid.password }}
-                      </span>
-                      <!-- Invalid password -->
-                      <span class="valid-feedback" v-if="validation.valid.password">
-                        {{ validation.valid.password }}
-                      </span>
-                      <div class="form-field">
-                          <label class="lock" for="login-password"><span class="hidden">Password</span></label>
-                          <input 
+                <!-- Valid Password -->
+                <span class="invalid-feedback" v-if="validation.invalid.password">
+                    {{ validation.invalid.password }}
+                </span>
+                <!-- Invalid password -->
+                <span class="valid-feedback" v-if="validation.valid.password">
+                    {{ validation.valid.password }}
+                </span>
+                <div class="form-field">
+                    <label class="lock" for="login-password"><span class="hidden">Password</span></label>
+                        <input 
                             id="password" 
                             type="password"
                             name="password"
                             class="form-input" 
                             placeholder="Password" 
                             v-bind:class="{
-                              'is-valid' : validation.valid.password,
-                              'is-invalid' : validation.invalid.password
+                                'is-valid' : validation.valid.password,
+                                'is-invalid' : validation.invalid.password
                             }"
-                            v-on:focus="clearValidation('password')"
+                            v-on:focus="validation('password')"
                             v-model="password"
                             required
-                          />
-                      </div>
+                        />
+                </div>
                           
-                      <div class="form-field">
-                          <input type="submit" value="Log in">
-                      </div>
-                      <p class="register-link">Don't have account? 
-                          <router-link to="/register"><span class="link">Register here</span></router-link>
-                      </p>
-                  </form>
-              </div>
-          </div>
-      </LayoutDiv>
-  </div>
+                <div class="form-field">
+                    <input type="submit" value="Log in">
+                </div>
+                    <p class="register-link">Don't have account? 
+                        <router-link to="/register"><span class="link">Register here</span></router-link>
+                    </p>
+                </form>
+                </div>
+            </div>
+        </LayoutDiv>
+    </div>
 </template>
 
 <script>
