@@ -18,7 +18,6 @@
                                 v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
                                 v-on:blur="emailBlured = true"
                                 placeholder="Email address" 
-                                required
                             >
                         </div>
                         
@@ -121,7 +120,7 @@ export default {
 .register-page {
     background-size: cover;
     background-color: rgb(183, 183, 183);
-    min-height: 110vh;
+    min-height: 130vh;
     nav {
     margin: 0;
     padding: 12px;
