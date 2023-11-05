@@ -18,6 +18,7 @@
                                 v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
                                 v-on:blur="emailBlured = true"
                                 placeholder="Email address" 
+                                required
                             >
                         </div>
                         
