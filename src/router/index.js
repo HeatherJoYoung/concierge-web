@@ -7,12 +7,9 @@ import Events from '../components/services/Events.vue'
 import Spa from '../components/services/Spa.vue'
 import AdminDashboard from '../components/mgmt/AdminDashboard.vue'
 import SpaManagement from '../components/mgmt/SpaManagement.vue'
-<<<<<<< HEAD
-import Login from '../components/pages/LoginPage.vue'
-import Register from '../components/pages/RegisterPage.vue'
-=======
+import LoginPage from '../components/pages/LoginPage.vue'
+import RegisterPage from '../components/pages/RegisterPage.vue'
 import EventsManagement from '../components/mgmt/EventsManagement.vue'
->>>>>>> main
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,20 +55,19 @@ const router = createRouter({
       component: SpaManagement
     },
     {
-<<<<<<< HEAD
       path: '/login',
       name: 'login',
-      component: Login
+      component: LoginPage
     },
     {
       path: '/register',
       name: 'register',
-      component: Register
-=======
+      component: RegisterPage
+    },
+    {
       path: '/mgmt/events',
       name: 'events-mgmt',
       component: EventsManagement
->>>>>>> main
     },
     {
       path: '/about',
