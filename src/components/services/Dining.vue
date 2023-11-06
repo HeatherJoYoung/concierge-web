@@ -119,6 +119,14 @@ export default {
 .dining-home {
   background-size: cover;
   background-image: url("@/assets/fine-dining.jpg");
+  min-height: 100vh; 
+  nav {
+        margin: 0;
+        padding: 12px;
+        border-bottom: 1px solid black;
+        background-color: white;
+        text-align: center;
+    }
   min-height: 100vh;  
   nav {
     margin: 0;

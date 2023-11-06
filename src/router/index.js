@@ -8,6 +8,7 @@ import AdminDashboard from '../components/mgmt/AdminDashboard.vue'
 import SpaManagement from '../components/mgmt/SpaManagement.vue'
 import LoginPage from '../components/pages/LoginPage.vue'
 import RegisterPage from '../components/pages/RegisterPage.vue'
+import DiningManagement from '../components/mgmt/DiningManagement.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +57,16 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: RegisterPage
+    },
+    {
+      path: '/mgmt/dining',
+      name: 'dining-mgmt',
+      component: DiningManagement
+    },
+    {
+      path: '/mgmt/dining',
+      name: 'dining-mgmt',
+      component: DiningManagement
     },
     {
       path: '/about',
