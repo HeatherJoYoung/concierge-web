@@ -8,18 +8,17 @@
                     Register
                 </div>
                 <div class="login-item">
-                    <form action="" method="post" class="form form-login">
+                    <form @submit="onSubmit" action="" method="post" class="form form-login">
                         <div class="form-field" id="formvalidation">
                             <label class="user" for="login-email"><span class="hidden">Email address</span></label>
                             <input 
                                 autocomplete="off"
-                                type="text"
+                                type="email"
                                 v-model="email"
-                                v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
-                                v-on:blur="emailBlured = true"
                                 placeholder="Email address" 
                                 required
                             >
+                            <p style="{color: red;}"> {{ errorMessage }}</p>
                         </div>
                         
                         <div class="form-field">
@@ -68,47 +67,33 @@ export default {
         NavBar,
         LayoutDiv
     },
-
-    el: '#formvalidation',
     data() {
         return {
-            name:'',
             email:'',
             password:'',
             confirmPassword:'',
-            validationErrors:{},
-            isSubmitting:false,
+            errorMessage: ''
         };
     },
 
     methods: {
-        validate: function() {
-            this.emailBlured = true;
-            this.passwordBlured = true;
-            if( this.validEmail(this.email) && this.validPassword(this.password)){
-                this.valid = true;
+        onSubmit(event) {
+            event.preventDefault();
+            console.log(event);
+        },
+        validateEmail(email) {
+            if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                this.errorMessage = ''
+            } else {
+                this.errorMessage = 'Invalid Email'
             }
         },
-
-        validEmail: function(email) {
-            var re = /(.+)@(.+){2,}\.(.+){2,}/;
-            if(re.test(email.toLowerCase())){
-                return true;
+        watch: {
+            email(value) {
+                this.email = value;
+                this.validateEmail(value);
             }
         },
-
-        validPassword : function(password) {
-            if (password.length > 7) {
-                return true;
-            }
-        },
-
-        submit : function(){
-            this.validate();
-            if(this.valid){
-                this.submitted = true;
-            }
-        }
     }
 }
 </script>
