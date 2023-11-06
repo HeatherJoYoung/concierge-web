@@ -72,7 +72,7 @@
                         />
                 </div>
                           
-                <div class="form-field">
+                <div class="form-field"> 
                     <input type="submit" value="Log in">
                 </div>
                     <p class="register-link">Don't have account? 
@@ -137,12 +137,6 @@ export default {
       this.$forceUpdate();
     }
   },
-
-  clearValidation: function (field) {
-    this.validation.valid[field] = '';
-    this.validation.invalid[field] = '';
-    this.$forceUpdate();
-  }
 };
 </script>
 
