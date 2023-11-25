@@ -89,16 +89,6 @@ export default {
   beforeMount() {
     this.fields[0].options = this.items
   },
-  computed: {
-      eventOptions() {
-        return this.events.map((event) => {
-          return {
-            id: event.id,
-            title: event.title
-          }
-        })
-      }
-  },
   methods: {
       submitReservation(values) {
         const isValid = this.validateInputs(values)
