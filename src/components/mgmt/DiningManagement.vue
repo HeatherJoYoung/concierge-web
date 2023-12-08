@@ -105,7 +105,7 @@ export default {
       loadingDiningReservations: 'loadingDiningReservations'
     }),
     hasReservations() {
-      return this.reservations?.length
+      return !!this.reservations?.length
     },
     reservations() {
       return this.diningReservations?.map(res => {
