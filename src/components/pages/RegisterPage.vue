@@ -17,14 +17,32 @@
             autocomplete="off"
             id="Form" 
           >
-            <!-- Invalid email -->
-            <span class="invalid-feedback" v-if="validation.invalid.email">
-              {{ validation.invalid.email }}
-            </span>
-            <!-- Valid email --->
-            <span class="valid-feedback" v-if="validation.valid.email">
-              {{ validation.valid.email }}
-            </span>
+            <div class="form-field">
+              <label  for="first-name"><span class="hidden">First Name</span></label>
+              <input 
+                type="text" 
+                name="firstName"
+                placeholder="First Name" 
+                id="first-name" 
+                class="form-input" 
+                v-model="firstName"
+                required
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="last-name"><span class="hidden">Last Name</span></label>
+              <input 
+                type="text" 
+                name="lastName"
+                placeholder="Last Name" 
+                id="last-name" 
+                class="form-input" 
+                v-model="lastName"
+                required
+              />
+            </div>
+
             <div class="form-field" id="formvalidation">
               <label class="user" for="login-email"><span class="hidden">Email address</span></label>
               <input 
@@ -43,10 +61,7 @@
                 required
               />
             </div>            
-            <!-- Invalid email confirmation-->
-            <span class="invalid-feedback" v-if="errorMessageEM">
-              {{ errorMessageEM }}
-            </span>
+
             <div class="form-field">
               <label class="user-confirm" for="login-email"><span class="hidden">Confirm Email</span></label>
               <input 
@@ -59,14 +74,7 @@
                 required
               />
             </div>
-            <!-- Valid Password -->
-            <span class="invalid-feedback" v-if="validation.invalid.password">
-              {{ validation.invalid.password }}
-            </span>
-            <!-- Invalid password -->
-            <span class="valid-feedback" v-if="validation.valid.password">
-              {{ validation.valid.password }}
-            </span>
+
             <div class="form-field">
               <label class="lock" for="login-password"><span class="hidden">Password</span></label>
               <input 
@@ -84,10 +92,7 @@
                 required
               />
             </div>
-            <!--- Invalid password confirmation -->
-            <span class="invalid-feedback" v-if="errorMessagePW">
-              {{ errorMessagePW }}
-            </span>
+
             <div class="form-field">
               <label class="lock-confirm" for="login-password"><span class="hidden">Confirm Password</span></label>
               <input 
@@ -100,9 +105,11 @@
                 required
               />
             </div>
+
             <div class="form-field">
               <button class="submit" @click="registerUser" :disabled="submitDisabled">Register Now</button>
             </div>
+
             <p class="login-link">Already have an account!
               <router-link to="/login"><span class="link">Login here</span></router-link>
             </p>
@@ -138,6 +145,8 @@ export default {
       submitted: false,
       errorMessageEM: '',
       errorMessagePW: '',
+      firstName: '',
+      lastName: '',
 
       validation: {
         invalid: {},
@@ -156,7 +165,9 @@ export default {
     async registerUser() {
       const args = {
         email: this.email,
-        password: this.password
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName
       }
       this.register(args)
     },
@@ -191,7 +202,6 @@ export default {
       return true
     },
     validateFormPW() {
-      // Password confirmation
       if (this.password !== this.passwordVerify) {
         this.errorMessagePW = 'Passwords do not match';
         return false
