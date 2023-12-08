@@ -1,7 +1,6 @@
 <template>
   <Bar
     id="chartId"
-    :options="chartOptions"
     :data="chartData"
     class="bar-chart"
   />

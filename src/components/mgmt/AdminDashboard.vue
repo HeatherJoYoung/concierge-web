@@ -12,13 +12,6 @@
           title="Managers"
           @addItem="addManager"
           @deleteItem="deleteManager"/>
-        <BasicTable
-          id="services"
-          :columns="serviceCols"
-          :rowData="services"
-          title="Services"
-          @addItem="addService"
-          @deleteItem="deleteService"/>
       </div>
       <div class="col right">
         <h2>Revenue by Service</h2>
@@ -107,9 +100,6 @@ export default {
             backgroundColor: '#ab1302'
           } 
         ]
-      },
-      chartOptions: {
-        responsive: false
       }
     }
   },
@@ -121,14 +111,6 @@ export default {
     deleteManager(mgr) {
       console.log('manager deleted')
       console.log(JSON.stringify(mgr))
-    },
-    addService(obj) {
-      console.log('service added')
-      console.log(JSON.stringify(obj))
-    },
-    deleteService(svc) {
-      console.log('service deleted')
-      console.log(JSON.stringify(svc))
     },
     convertLabelsToCSV(labels) {
       let result
