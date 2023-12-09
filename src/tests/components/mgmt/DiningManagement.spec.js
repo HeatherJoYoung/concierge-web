@@ -3,17 +3,11 @@ import { shallowMount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import DiningManagement from '@/components/mgmt/DiningManagement.vue'
 import { useReservationsStore } from '@/stores/reservations'
-// import dayjs from  'dayjs'
 
 describe('DiningManagement', () => {
   let wrapper
   let store
 
-  /* const mockAddDiningReservation = vi.fn()
-  const mockUpdateDiningReservation = vi.fn()
-  const mockDeleteDiningReservation = vi.fn()
-  const mockFetchDiningReservations = vi.fn()
- */
   let mockDiningReservations = [
     {
       id: 1,
@@ -71,18 +65,6 @@ describe('DiningManagement', () => {
   ]
 
   beforeEach(() => {
-    /* useReservationsStore = defineStore('reservations', {
-      getters: {
-        getDiningReservations: mockDiningReservations,
-        loadingDiningReservations: false
-      },
-      actions: {
-        addDiningReservation: mockAddDiningReservation,
-        updateDiningReservation: mockUpdateDiningReservation,
-        deleteDiningReservation: mockDeleteDiningReservation,
-        fetchDiningReservations: mockFetchDiningReservations
-      }
-    }) */
 
     wrapper = shallowMount(DiningManagement, {
       global: {
@@ -102,7 +84,6 @@ describe('DiningManagement', () => {
   })
 
   afterEach(() => {
-    vi.useRealTimers()
     vi.resetAllMocks()
     wrapper.unmount()
   })

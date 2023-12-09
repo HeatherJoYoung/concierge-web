@@ -136,10 +136,13 @@ export default {
       return this.reservations.map(res => {
         const event = this.events.find(e => e.id === res.event_id)
         const fullname = `${res.first_name} ${res.last_name}`
-        const date = dayjs(event.start_time).format('M/D/YYYY')
+        let date = ''
+        if (event) {
+          date = dayjs(event.start_time).format('M/D/YY')
+        }
         return {
           ...res,
-          eventName: event.title,
+          eventName: event ? event.title : '',
           client: fullname,
           date: date
         }
