@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
-export const useSpaStore = defineStore({
-  id: 'services',
+export const useSpaStore = defineStore('spa', {
+  id: 'spa',
   state: () => ({
     loadingSpaServices: false,
     loadingTherapists: false,

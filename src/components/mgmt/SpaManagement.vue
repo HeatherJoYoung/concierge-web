@@ -127,11 +127,11 @@ export default {
         const therapist = this.therapists.find(obj => obj.id === res.therapist_id)
         const therapistName = `${therapist.first_name} ${therapist.last_name}`
         const service = this.services.find(obj => obj.id === res.spa_service)
-        const serviceLabel = service.title
+        const serviceLabel = service ? service.title : ''
         return {
           ...res,
           date: dayjsStartTime.utc().format('M/D/YYYY'),
-          time: dayjsStartTime.utc().format('H:mm a'),
+          time: dayjsStartTime.utc().format('h:mm a'),
           duration: duration,
           client: res.client_name,
           staff: therapistName,
@@ -145,7 +145,8 @@ export default {
     ...mapActions(useReservationsStore, ['fetchSpaReservations', 'updateSpaReservation', 'deleteSpaReservation']),
     updateReservation(obj) {
       const times = obj.time.split(/(:|\s+)/)
-      const totalTimeInMinutes = (parseInt(times[0]) * 60) + parseInt(times[2])
+      const hour = times[4] === 'pm' ? parseInt(times[0]) + 12 : parseInt(times[0])
+      const totalTimeInMinutes = (hour * 60) + parseInt(times[2])
 
       const dayjsDate = dayjs(obj.date).utcOffset(0).startOf('day')
       const startTime = dayjsDate.add(totalTimeInMinutes, 'minutes')
